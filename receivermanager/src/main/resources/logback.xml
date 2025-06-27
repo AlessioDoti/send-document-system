@@ -19,11 +19,11 @@
         </encoder>
     </appender>
 
-    <!--<root level="INFO">
-        <appender-ref ref="JSON_CONSOLE"/>
-    </root>-->
-
     <root level="INFO">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="JSON_CONSOLE"/>
     </root>
+
+    <!--<root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>-->
 </configuration>
