@@ -1,10 +1,14 @@
 package com.example.aruba.senddocumentsystem.receivermanager.domain.ports.rest.impl;
 
 import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverDTO;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.MessageDeliveryException;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.messagebroker.MessageProducer;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.nosql.ReceiverNoSqlService;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.rest.RequestHandler;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.service.ReceiverService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,16 +21,35 @@ import org.springframework.transaction.annotation.Transactional;
 public class RequestHandlerImpl implements RequestHandler {
 
     @Autowired
-    ReceiverService receiverService;
+    private ReceiverService receiverService;
+
+    @Autowired
+    private MessageProducer messageProducer;
+
+    @Autowired
+    private ReceiverNoSqlService receiverNoSqlService;
 
     @Transactional
     @Override
     public ReceiverDTO insertReceiver(ReceiverDTO dto) {
-        //todo use MDC
-        //todo stampa esito
-        log.info("Inserting Receiver: {}", dto.getReceiverFiscalCode());
-        return receiverService.insertReceiver(dto);
-        //todo kafka produce
+        try{
+            MDC.put("username", dto.getUsername());
+            MDC.put("receiver", dto.getReceiverFiscalCode());
+            log.info("Inserting Receiver: {}", dto.getReceiverFiscalCode());
+            var returnDTO = receiverService.insertReceiver(dto);
+            log.info("Receiver: {} successfully inserted, all listeners will be notified", dto.getReceiverFiscalCode());
+            messageProducer.produceMessage(returnDTO);
+            log.info("Message sent Successfully");
+            return returnDTO;
+        } catch (MessageDeliveryException e) {
+            log.error("Cannot send tracking event, it will be persisted");
+            receiverNoSqlService.persistEvent(dto);
+            log.info("Event Persisted Successfully");
+            return dto;
+        }finally {
+            MDC.clear();
+        }
+
     }
 
     @Transactional
