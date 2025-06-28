@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: internalnotificator-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: notifications
+      MYSQL_USER: internalnotificator
+      MYSQL_PASSWORD: internalnotificator
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql_data:/var/lib/internalnotificator-mysql
+      - ./internalnotificator-mysql-init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

@@ -34,7 +34,7 @@ public class EventHandlerImpl implements EventHandler {
             log.info("Delivery: {} successfully inserted", dto.getTraceParent());
 
         } catch (Exception e) {
-            log.error("Cannot read event {}\n it will be persisted", dto.getTraceParent());
+            log.error("Error occurred while processing the event event {}\n it will be persisted", dto.getTraceParent());
             noSqlService.persistEvent(dto, e.getMessage());
             log.info("Insert Event Persisted Successfully");
             throw new RuntimeException(e);

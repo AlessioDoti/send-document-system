@@ -1,7 +1,7 @@
 services:
   mongo:
     image: mongo:latest
-    container_name: requestmanager-mongo
+    container_name: deliverytracker-mongo
     ports:
       - "27019:27017"
     environment:
