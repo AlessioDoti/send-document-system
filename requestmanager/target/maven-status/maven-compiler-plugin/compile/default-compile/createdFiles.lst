@@ -1,0 +1,5 @@
+com\example\aruba\senddocumentsystem\requestmanage\RequestManagerApplication.class
+com\example\aruba\senddocumentsystem\requestmanage\domain\dto\RequestDTO$RequestDTOBuilder.class
+com\example\aruba\senddocumentsystem\requestmanage\domain\dto\RequestDTO.class
+com\example\aruba\senddocumentsystem\requestmanage\domain\enumeration\Status.class
+com\example\aruba\senddocumentsystem\requestmanage\domain\enumeration\DeliveryType.class

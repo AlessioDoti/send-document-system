@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class ReceiverService extends ValidatingService<ReceiverDTO> {
@@ -32,6 +34,10 @@ public class ReceiverService extends ValidatingService<ReceiverDTO> {
     public ReceiverDTO updateReceiver(ReceiverDTO dto){
         validate(dto);
         return receiverPersistenceService.updateReceiver(dto);
+    }
+
+    public List<ReceiverDTO> findReceiversFromCodes(List<String> codes, String user){
+        return receiverPersistenceService.findReceiversFromCodes(codes, user);
     }
 
     public Page<ReceiverDTO> findUserReceivers(String username, Pageable pageable){

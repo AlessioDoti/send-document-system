@@ -1,15 +1,15 @@
 services:
   mongo:
     image: mongo:latest
-    container_name: mongo
+    container_name: requestmanager-mongo
     ports:
-      - "27017:27017"
+      - "27018:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: adminuser
       MONGO_INITDB_ROOT_PASSWORD: adminpassword
-      MONGO_INITDB_DATABASE: receivers
+      MONGO_INITDB_DATABASE: requests
     volumes:
       - mongo_data:/data/db
-      - ./mongo-init-scripts:/docker-entrypoint-initdb.d:ro
+      - ./requestmanager-mongo-init-scripts:/docker-entrypoint-initdb.d:ro
 volumes:
   mongo_data:

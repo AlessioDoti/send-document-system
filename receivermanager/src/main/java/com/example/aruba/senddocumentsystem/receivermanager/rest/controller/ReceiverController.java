@@ -51,4 +51,10 @@ public class ReceiverController {
         Page<ReceiverDTO> page = handler.getUserReceivers(username, pageable);
         return ResponseEntity.ok(assembler.toModel(page));
     }
+
+    @GetMapping("/internal")
+    public ResponseEntity<List<ReceiverDTO>> getReceiversFromCodes(@RequestParam("codes") List<String> codes, @RequestParam("user") String user){
+        var ret = handler.getReceiversFromCodes(codes, user);
+        return ResponseEntity.ok(ret);
+    }
 }

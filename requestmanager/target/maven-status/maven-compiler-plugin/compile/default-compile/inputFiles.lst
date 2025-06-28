@@ -1,0 +1,8 @@
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\domain\dto\RequestDTO.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\domain\enumeration\DeliveryType.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\domain\enumeration\Status.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\RequestManagerApplication.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\rest\controller\RequestController.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\rest\factory\RequestDTOFactory.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\rest\request\BaseRequest.java
+C:\Users\aless\Documents\Java Projects\send-document-system\requestmanager\src\main\java\com\example\aruba\senddocumentsystem\requestmanage\rest\request\InsertRequestReq.java

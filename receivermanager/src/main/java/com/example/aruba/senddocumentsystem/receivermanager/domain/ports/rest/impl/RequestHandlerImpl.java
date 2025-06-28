@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -35,36 +37,60 @@ public class RequestHandlerImpl implements RequestHandler {
         try{
             MDC.put("username", dto.getUsername());
             MDC.put("receiver", dto.getReceiverFiscalCode());
+
             log.info("Inserting Receiver: {}", dto.getReceiverFiscalCode());
             var returnDTO = receiverService.insertReceiver(dto);
             log.info("Receiver: {} successfully inserted, all listeners will be notified", dto.getReceiverFiscalCode());
+
             messageProducer.produceMessage(returnDTO);
-            log.info("Message sent Successfully");
+            log.info("Insert Message sent Successfully");
+
             return returnDTO;
         } catch (MessageDeliveryException e) {
-            log.error("Cannot send tracking event, it will be persisted");
+            log.error("Cannot send insert tracking event, it will be persisted");
             receiverNoSqlService.persistEvent(dto);
-            log.info("Event Persisted Successfully");
+            log.info("Insert Event Persisted Successfully");
+
             return dto;
         }finally {
             MDC.clear();
         }
-
     }
 
     @Transactional
     @Override
     public ReceiverDTO updateReceiver(ReceiverDTO dto) {
-        //todo use MDC
-        //todo stampa esito
-        log.info("Updating receiver: {}", dto.getReceiverFiscalCode());
-        return receiverService.updateReceiver(dto);
-        //todo kafka
+        try{
+            MDC.put("receiver", dto.getReceiverFiscalCode());
+
+            log.info("Updating receiver: {}", dto.getReceiverFiscalCode());
+            var returnDTO = receiverService.updateReceiver(dto);
+            log.info("Receiver: {} successfully updated, all listeners will be notified", dto.getReceiverFiscalCode());
+
+            messageProducer.produceMessage(returnDTO);
+            log.info("Update Message sent Successfully");
+
+            return returnDTO;
+        } catch (MessageDeliveryException e) {
+            log.error("Cannot send update tracking event, it will be persisted");
+            receiverNoSqlService.persistEvent(dto);
+            log.info("Update Event Persisted Successfully");
+
+            return dto;
+        }finally {
+            MDC.clear();
+        }
     }
 
     @Override
     public Page<ReceiverDTO> getUserReceivers(String username, Pageable pageable) {
         log.info("Getting Receivers for user: {}", username);
         return receiverService.findUserReceivers(username, pageable);
+    }
+
+    @Override
+    public List<ReceiverDTO> getReceiversFromCodes(List<String> codes, String user) {
+        log.info("Getting Receivers from codes: {}", codes);
+        return receiverService.findReceiversFromCodes(codes, user);
     }
 }

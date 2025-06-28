@@ -1,0 +1,71 @@
+spring:
+  application:
+    name:
+      "Request Manager"
+  datasource:
+    url: jdbc:mysql://localhost:3307/requestlog?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    mongodb:
+      host: localhost
+      port: 27018
+      authentication-database: admin
+      database: requests
+      username: adminuser
+      password: adminpassword
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  kafka:
+    bootstrap-servers: localhost:9093
+    producer:
+      delivery-timeout-ms: 4000
+      retries: 3
+      retryBackoffMs: 500
+      acks: all
+      max-block-ms: 10000
+      deliveryTimeoutMs: 4000
+      requestTimeoutMs: 4000
+      topic: send_document_system.delivery_requests
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+clients:
+  receivers:
+    url: localhost:8080
+feign:
+  client:
+    config:
+      receivers:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      receivers:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.hibernate.SQL: WARN
+    org.hibernate.type.descriptor.sql.BasicBinder: WARN

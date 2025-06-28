@@ -4,6 +4,8 @@ import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverD
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface RequestHandler {
 
     ReceiverDTO insertReceiver(ReceiverDTO dto);
@@ -11,4 +13,6 @@ public interface RequestHandler {
     ReceiverDTO updateReceiver(ReceiverDTO dto);
 
     Page<ReceiverDTO> getUserReceivers(String username, Pageable pageable);
+
+    List<ReceiverDTO> getReceiversFromCodes(List<String> codes, String user);
 }
