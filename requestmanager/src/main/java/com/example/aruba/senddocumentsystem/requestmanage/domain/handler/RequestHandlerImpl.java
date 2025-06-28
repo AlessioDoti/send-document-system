@@ -33,7 +33,7 @@ public class RequestHandlerImpl implements RequestHandler {
     public RequestDTO insertRequest(RequestDTO dto) {
         try{
             MDC.put("username", dto.getUsername());
-            MDC.put("uuid", dto.getUuid());
+            MDC.put("uuid", dto.getTraceParent());
 
             log.info("Inserting Request");
             var returnDTO = requestService.insertRequest(dto);

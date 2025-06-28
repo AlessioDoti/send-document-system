@@ -44,7 +44,7 @@ public class KafkaProducer implements MessageProducer {
     @SneakyThrows
     private String buildHeader(RequestDTO dto){
         var header = new HashMap<String, String>();
-        header.put("uuid", dto.getUuid());
+        header.put("uuid", dto.getTraceParent());
         header.put("username", dto.getUsername());
 
         return objectMapper.writeValueAsString(header);

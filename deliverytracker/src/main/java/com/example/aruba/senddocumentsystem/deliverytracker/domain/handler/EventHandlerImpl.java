@@ -24,18 +24,17 @@ public class EventHandlerImpl implements EventHandler {
 
     @Override
     @Transactional
-    public DeliveryDTO handleEvent(DeliveryDTO dto) {
+    public void handleEvent(DeliveryDTO dto) {
         try{
             MDC.put("username", dto.getUsername());
-            MDC.put("traceParent", dto.getRequestTraceParent());
+            MDC.put("traceParent", dto.getTraceParent());
 
-            log.info("Inserting Delivery: {}", dto.getRequestTraceParent());
-            var returnDTO = deliveryService.persistDelivery(dto);
-            log.info("Delivery: {} successfully inserted", dto.getRequestTraceParent());
+            log.info("Inserting Delivery: {}", dto.getTraceParent());
+            deliveryService.persistDelivery(dto);
+            log.info("Delivery: {} successfully inserted", dto.getTraceParent());
 
-            return returnDTO;
         } catch (Exception e) {
-            log.error("Cannot read event {}\n it will be persisted", dto.getRequestTraceParent());
+            log.error("Cannot read event {}\n it will be persisted", dto.getTraceParent());
             noSqlService.persistEvent(dto, e.getMessage());
             log.info("Insert Event Persisted Successfully");
             throw new RuntimeException(e);

@@ -14,7 +14,8 @@ public class DeliveryMapper {
         var delivery = new Delivery();
         delivery.setStatus(dto.getStatus().toString());
         delivery.setUsername(dto.getUsername());
-        delivery.setTraceparent(dto.getRequestTraceParent());
+        delivery.setTraceparent(dto.getTraceParent());
+        delivery.setInsertTs(dto.getTimestamp());
 
         return delivery;
     }
@@ -22,7 +23,7 @@ public class DeliveryMapper {
     public DeliveryDTO toDTO(Delivery delivery){
         return DeliveryDTO.builder()
                 .status(Status.valueOf(delivery.getStatus().toUpperCase()))
-                .requestTraceParent(delivery.getTraceparent())
+                .traceParent(delivery.getTraceparent())
                 .timestamp(Objects.isNull(delivery.getUpdateTs()) ?
                         delivery.getInsertTs() :
                         delivery.getUpdateTs())

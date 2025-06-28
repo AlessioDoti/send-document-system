@@ -26,7 +26,7 @@ public class DeliveryPersistenceServiceImpl implements DeliveryPersistenceServic
 
     @Override
     public DeliveryDTO persistDelivery(DeliveryDTO dto) {
-        var delivery = repository.findByTraceparentAndUsername(dto.getRequestTraceParent(), dto.getUsername()).orElse(null);
+        var delivery = repository.findByTraceparentAndUsername(dto.getTraceParent(), dto.getUsername()).orElse(null);
         if(Objects.isNull(delivery)){
             log.info("Delivery not existing, it will be created");
             delivery = mapper.fromDTO(dto);

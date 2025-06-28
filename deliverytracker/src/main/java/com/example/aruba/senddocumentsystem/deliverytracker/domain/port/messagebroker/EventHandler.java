@@ -4,6 +4,6 @@ import com.example.aruba.senddocumentsystem.deliverytracker.domain.dto.DeliveryD
 
 public interface EventHandler {
 
-    DeliveryDTO handleEvent(DeliveryDTO dto);
+    void handleEvent(DeliveryDTO dto);
 
 }

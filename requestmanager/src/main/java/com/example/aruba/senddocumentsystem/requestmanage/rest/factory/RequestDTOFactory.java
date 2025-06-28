@@ -25,7 +25,7 @@ public class RequestDTOFactory {
                 .deliveryType(DeliveryType.valueOf(req.getDeliveryType().toUpperCase()))
                 .receivers(req.getReceivers())
                 .documents(req.getDocuments())
-                .uuid(UUID.randomUUID().toString())
+                .traceParent(UUID.randomUUID().toString())
                 .build();
     }
 }

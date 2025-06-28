@@ -14,7 +14,7 @@ public class RequestLogMapper {
         var requestLog = new RequestLog();
         requestLog.setDeliveryType(dto.getDeliveryType().toString());
         requestLog.setUsername(dto.getUsername());
-        requestLog.setTraceParent(dto.getUuid());
+        requestLog.setTraceParent(dto.getTraceParent());
         requestLog.setReceivers(dto.getAddresses()
                 .stream()
                 .map(a -> buildReqLogReceiver(a, requestLog))
@@ -28,7 +28,7 @@ public class RequestLogMapper {
 
     public RequestDTO toDTO(RequestLog requestLog){
         return RequestDTO.builder()
-                .uuid(requestLog.getTraceParent())
+                .traceParent(requestLog.getTraceParent())
                 .username(requestLog.getUsername())
                 .deliveryType(DeliveryType.valueOf(requestLog.getDeliveryType().toUpperCase()))
                 .addresses(requestLog.getReceivers().stream().map(RequestLogReceiver::getReceiver).toList())

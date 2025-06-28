@@ -26,6 +26,6 @@ public class RequestDTO {
 
     private DeliveryType deliveryType;
 
-    private String uuid;
+    private String traceParent;
 
 }
