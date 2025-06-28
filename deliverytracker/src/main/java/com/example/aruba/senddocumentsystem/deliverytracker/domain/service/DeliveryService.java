@@ -19,9 +19,9 @@ public class DeliveryService extends ValidatingService<DeliveryDTO> {
         this.persistenceService = persistenceService;
     }
 
-    public DeliveryDTO persistDelivery(DeliveryDTO dto){
+    public void persistDelivery(DeliveryDTO dto){
         validate(dto);
-        return persistenceService.persistDelivery(dto);
+        persistenceService.persistDelivery(dto);
     }
 
     public DeliveryDTO findByUsernameAndTraceParent(String username, String traceParent){

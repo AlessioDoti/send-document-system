@@ -4,6 +4,6 @@ import com.example.aruba.senddocumentsystem.deliverytracker.domain.dto.DeliveryD
 
 public interface DeliveryPersistenceService {
 
-    DeliveryDTO persistDelivery(DeliveryDTO dto);
+    void persistDelivery(DeliveryDTO dto);
     DeliveryDTO findByUsernameAndTraceParent(String username, String traceParent);
 }

@@ -25,7 +25,7 @@ public class DeliveryPersistenceServiceImpl implements DeliveryPersistenceServic
     private final DeliveryMapper mapper;
 
     @Override
-    public DeliveryDTO persistDelivery(DeliveryDTO dto) {
+    public void persistDelivery(DeliveryDTO dto) {
         var delivery = repository.findByTraceparentAndUsername(dto.getTraceParent(), dto.getUsername()).orElse(null);
         if(Objects.isNull(delivery)){
             log.info("Delivery not existing, it will be created");
@@ -35,12 +35,12 @@ public class DeliveryPersistenceServiceImpl implements DeliveryPersistenceServic
             updateStaus(delivery, dto);
         }
 
-        return mapper.toDTO(repository.save(delivery));
+        repository.save(delivery);
     }
 
     @Override
     public DeliveryDTO findByUsernameAndTraceParent(String username, String traceParent) {
-        var delivery = repository.findByTraceparentAndUsername(username, traceParent).orElse(null);
+        var delivery = repository.findByTraceparentAndUsername(traceParent, username).orElse(null);
         if(Objects.nonNull(delivery)){
             log.info("Delivery {} Found", traceParent);
             return mapper.toDTO(delivery);
