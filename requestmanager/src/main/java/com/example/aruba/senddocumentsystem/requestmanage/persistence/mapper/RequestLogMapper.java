@@ -30,7 +30,7 @@ public class RequestLogMapper {
         return RequestDTO.builder()
                 .uuid(requestLog.getTraceParent())
                 .username(requestLog.getUsername())
-                .deliveryType(DeliveryType.fromValue(requestLog.getDeliveryType()))
+                .deliveryType(DeliveryType.valueOf(requestLog.getDeliveryType().toUpperCase()))
                 .addresses(requestLog.getReceivers().stream().map(RequestLogReceiver::getReceiver).toList())
                 .documents(requestLog.getDocuments().stream().map(RequestLogDocument::getDocument).toList())
                 .build();

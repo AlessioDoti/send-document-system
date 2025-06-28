@@ -2,7 +2,7 @@ package com.example.aruba.senddocumentsystem.requestmanage.kafka.producer;
 
 import com.example.aruba.senddocumentsystem.requestmanage.domain.dto.RequestDTO;
 import com.example.aruba.senddocumentsystem.requestmanage.domain.exception.MessageDeliveryException;
-import com.example.aruba.senddocumentsystem.requestmanage.domain.ports.messagebroker.MessageProducer;
+import com.example.aruba.senddocumentsystem.requestmanage.domain.port.messagebroker.MessageProducer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

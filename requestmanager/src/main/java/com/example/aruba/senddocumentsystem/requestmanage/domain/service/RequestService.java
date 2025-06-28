@@ -1,8 +1,8 @@
 package com.example.aruba.senddocumentsystem.requestmanage.domain.service;
 
 import com.example.aruba.senddocumentsystem.requestmanage.domain.dto.RequestDTO;
-import com.example.aruba.senddocumentsystem.requestmanage.domain.ports.feign.ReceiverRestService;
-import com.example.aruba.senddocumentsystem.requestmanage.domain.ports.persistence.RequestPersistenceService;
+import com.example.aruba.senddocumentsystem.requestmanage.domain.port.feign.ReceiverRestService;
+import com.example.aruba.senddocumentsystem.requestmanage.domain.port.persistence.RequestPersistenceService;
 import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

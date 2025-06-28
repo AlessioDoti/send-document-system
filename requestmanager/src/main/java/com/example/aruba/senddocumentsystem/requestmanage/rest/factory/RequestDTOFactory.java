@@ -22,7 +22,7 @@ public class RequestDTOFactory {
     private RequestDTO getInsertDTO(InsertRequestReq req){
         return RequestDTO.builder()
                 .username(req.getUsername())
-                .deliveryType(DeliveryType.fromValue(req.getDeliveryType()))
+                .deliveryType(DeliveryType.valueOf(req.getDeliveryType().toUpperCase()))
                 .receivers(req.getReceivers())
                 .documents(req.getDocuments())
                 .uuid(UUID.randomUUID().toString())

@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: deliverytracker-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: deliveries
+      MYSQL_USER: deliverytracker
+      MYSQL_PASSWORD: delivery_tracker
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data:/var/lib/deliverytracker-mysql
+      - ./deliverytracker-mysql-init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

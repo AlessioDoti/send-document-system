@@ -1,7 +1,7 @@
 package com.example.aruba.senddocumentsystem.requestmanage.rest.controller;
 
 import com.example.aruba.senddocumentsystem.requestmanage.domain.dto.RequestDTO;
-import com.example.aruba.senddocumentsystem.requestmanage.domain.ports.rest.RequestHandler;
+import com.example.aruba.senddocumentsystem.requestmanage.domain.port.rest.RequestHandler;
 import com.example.aruba.senddocumentsystem.requestmanage.rest.factory.RequestDTOFactory;
 import com.example.aruba.senddocumentsystem.requestmanage.rest.request.InsertRequestReq;
 import lombok.RequiredArgsConstructor;

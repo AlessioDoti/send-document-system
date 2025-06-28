@@ -4,7 +4,7 @@ import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverD
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.InvalidUsernameException;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.ReceiverAlreadyExistsException;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.ReceiverNotFoundException;
-import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.persistence.ReceiverPersistenceService;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.port.persistence.ReceiverPersistenceService;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.entity.Receiver;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.entity.User;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.mapper.ReceiverMapper;

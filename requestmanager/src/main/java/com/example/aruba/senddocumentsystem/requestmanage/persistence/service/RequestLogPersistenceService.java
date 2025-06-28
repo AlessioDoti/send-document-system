@@ -1,7 +1,7 @@
 package com.example.aruba.senddocumentsystem.requestmanage.persistence.service;
 
 import com.example.aruba.senddocumentsystem.requestmanage.domain.dto.RequestDTO;
-import com.example.aruba.senddocumentsystem.requestmanage.domain.ports.persistence.RequestPersistenceService;
+import com.example.aruba.senddocumentsystem.requestmanage.domain.port.persistence.RequestPersistenceService;
 import com.example.aruba.senddocumentsystem.requestmanage.persistence.mapper.RequestLogMapper;
 import com.example.aruba.senddocumentsystem.requestmanage.persistence.repository.RequestLogRepository;
 import lombok.RequiredArgsConstructor;

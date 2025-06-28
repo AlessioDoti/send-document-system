@@ -1,7 +1,7 @@
 package com.example.aruba.senddocumentsystem.receivermanager.rest.controller;
 
 import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverDTO;
-import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.rest.RequestHandler;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.port.rest.RequestHandler;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.factory.ReceiverDTOFactory;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.request.impl.InsertReceiverRequest;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.request.impl.UpdateReceiverRequest;

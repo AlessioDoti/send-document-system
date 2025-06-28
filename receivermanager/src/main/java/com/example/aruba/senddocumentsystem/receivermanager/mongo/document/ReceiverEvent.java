@@ -12,5 +12,7 @@ public class ReceiverEvent {
     @Id
     private String id;
 
+    private String error;
+
     private ReceiverDTO dto;
 }

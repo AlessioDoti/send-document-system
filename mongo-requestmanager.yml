@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: adminpassword
       MONGO_INITDB_DATABASE: requests
     volumes:
-      - mongo_data:/data/db
+      - mongo_data:/data/db/requestmanager
       - ./requestmanager-mongo-init-scripts:/docker-entrypoint-initdb.d:ro
 volumes:
   mongo_data:

@@ -12,5 +12,7 @@ public class RequestEvent {
     @Id
     private String id;
 
+    private String error;
+
     private RequestDTO dto;
 }
