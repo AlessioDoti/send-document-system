@@ -24,7 +24,7 @@ public class KafkaConsumer {
     @KafkaListener(topics = "${kafka.consumer.topic}", groupId = "kafka.consumer.group-id")
     public void consume(@Header(KafkaHeaders.RECEIVED_KEY) String key, String value) {
         log.info("Received message - Key: {}, Value: {}", key, value);
-        var dto = factory.getDeliveryDTO(value);
+        var dto = factory.getNotificationDTO(value);
         handler.handleEvent(dto);
     }
 
