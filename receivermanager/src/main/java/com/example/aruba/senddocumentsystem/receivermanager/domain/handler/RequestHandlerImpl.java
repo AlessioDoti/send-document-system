@@ -1,4 +1,4 @@
-package com.example.aruba.senddocumentsystem.receivermanager.handler;
+package com.example.aruba.senddocumentsystem.receivermanager.domain.handler;
 
 import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverDTO;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.MessageDeliveryException;
