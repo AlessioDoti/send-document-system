@@ -1,0 +1,40 @@
+spring:
+  sql:
+    init:
+      mode: embedded
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: always
+    continue-on-error: true
+    schema: classpath:sql/init.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+
+  data:
+    mongodb:
+      port: 1
+      database: testdb
+      username: adminuser
+      password: adminpassword
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.4.18
+        replica-set:
+          enabled: false

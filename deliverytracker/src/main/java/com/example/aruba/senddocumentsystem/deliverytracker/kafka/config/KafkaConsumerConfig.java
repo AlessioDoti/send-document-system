@@ -28,7 +28,6 @@ public class KafkaConsumerConfig {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
 
-
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory(
             ConsumerFactory<String, String> consumerFactory) {
