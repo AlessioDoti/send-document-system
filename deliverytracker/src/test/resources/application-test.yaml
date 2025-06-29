@@ -27,9 +27,7 @@ spring:
   data:
     mongodb:
       port: 1
-      database: testdb
-      username: adminuser
-      password: adminpassword
+      database: tests
 
 de:
   flapdoodle:
