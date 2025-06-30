@@ -1,7 +1,7 @@
 package com.example.aruba.senddocumentsystem.receivermanager.rest.controller;
 
 import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverDTO;
-import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.rest.RequestHandler;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.port.rest.RequestHandler;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.factory.ReceiverDTOFactory;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.request.impl.InsertReceiverRequest;
 import com.example.aruba.senddocumentsystem.receivermanager.rest.request.impl.UpdateReceiverRequest;
@@ -50,5 +50,11 @@ public class ReceiverController {
 
         Page<ReceiverDTO> page = handler.getUserReceivers(username, pageable);
         return ResponseEntity.ok(assembler.toModel(page));
+    }
+
+    @GetMapping("/internal")
+    public ResponseEntity<List<ReceiverDTO>> getReceiversFromCodes(@RequestParam("codes") List<String> codes, @RequestParam("user") String user){
+        var ret = handler.getReceiversFromCodes(codes, user);
+        return ResponseEntity.ok(ret);
     }
 }

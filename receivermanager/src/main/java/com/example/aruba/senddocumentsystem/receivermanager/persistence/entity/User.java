@@ -3,10 +3,8 @@ package com.example.aruba.senddocumentsystem.receivermanager.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
-
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 @Data
 public class User {
 

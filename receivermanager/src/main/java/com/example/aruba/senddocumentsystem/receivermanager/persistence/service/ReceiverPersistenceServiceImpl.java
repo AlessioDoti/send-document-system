@@ -4,7 +4,7 @@ import com.example.aruba.senddocumentsystem.receivermanager.domain.dto.ReceiverD
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.InvalidUsernameException;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.ReceiverAlreadyExistsException;
 import com.example.aruba.senddocumentsystem.receivermanager.domain.exception.ReceiverNotFoundException;
-import com.example.aruba.senddocumentsystem.receivermanager.domain.ports.persistence.ReceiverPersistenceService;
+import com.example.aruba.senddocumentsystem.receivermanager.domain.port.persistence.ReceiverPersistenceService;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.entity.Receiver;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.entity.User;
 import com.example.aruba.senddocumentsystem.receivermanager.persistence.mapper.ReceiverMapper;
@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -68,6 +69,11 @@ public class ReceiverPersistenceServiceImpl implements ReceiverPersistenceServic
     @Override
     public Page<ReceiverDTO> findUserReceivers(String username, Pageable pageable) {
         return receiverRepository.findByUsers_Username(username, pageable).map(mapper::toDTO);
+    }
+
+    @Override
+    public List<ReceiverDTO> findReceiversFromCodes(List<String> codes, String user) {
+        return receiverRepository.findByFiscalCodeInAndUsers_UsernameAndValidTrue(codes, user).stream().map(mapper::toDTO).toList();
     }
 
     private void addUser(Receiver receiver, String username){

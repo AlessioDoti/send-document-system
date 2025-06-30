@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: receivermanager-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: receivers
+      MYSQL_USER: receivermanager
+      MYSQL_PASSWORD: receivermanagerpwd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/receivermanager-mysql
+      - ./receivermanager-mysql-init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

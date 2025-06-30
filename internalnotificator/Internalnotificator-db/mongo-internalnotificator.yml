@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: internalnotificator-mongo
+    ports:
+      - "27020:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: adminuser
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword
+      MONGO_INITDB_DATABASE: notifications
+    volumes:
+      - mongo_data:/data/internalnotificator/mongo
+      - ./internalnotificator-mongo-init-scripts:/docker-entrypoint-initdb.d:ro
+volumes:
+  mongo_data:

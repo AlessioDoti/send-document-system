@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "c5389e05-a294-47a1-b4e1-ff081d920da8",
+		"name": "Delivery Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46232752",
+		"_collection_link": "https://alessiodoti.postman.co/workspace/Alessio-Doti's-Workspace~e66c331a-9514-4267-8321-b5beb67f5bb8/collection/46232752-c5389e05-a294-47a1-b4e1-ff081d920da8?action=share&source=collection_link&creator=46232752"
+	},
+	"item": [
+		{
+			"name": "Stato Richiesta Invio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/deliveries?username=user2&traceparent=ba7cf543-c1d9-4d3c-9984-badd5362e8a4",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"deliveries"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user2"
+						},
+						{
+							"key": "traceparent",
+							"value": "ba7cf543-c1d9-4d3c-9984-badd5362e8a4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

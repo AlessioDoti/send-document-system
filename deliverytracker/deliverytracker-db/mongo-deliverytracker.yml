@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: deliverytracker-mongo
+    ports:
+      - "27019:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: adminuser
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword
+      MONGO_INITDB_DATABASE: requests
+    volumes:
+      - mongo_data:/data/deliverytracker/mongo
+      - ./deliverytracker-mongo-init-scripts:/docker-entrypoint-initdb.d:ro
+volumes:
+  mongo_data:

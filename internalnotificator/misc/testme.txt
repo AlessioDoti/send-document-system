@@ -1,0 +1,26 @@
+Per testare il progetto è necessario lanciare con docker compose il file kafka.yml nella root del progetto e i due yml contenuti nella cartella internalnotificator-db.
+
+Gli eventi lato kafka possono essere prodotti dal receivermanager o inseriti manualmente con kafka-ui (presente nel container e disponibile all'url localhost:9000)
+
+Di seguito un sample di evento kafka:
+
+VALUE::
+{
+	"username": "user2",
+	"documents": [
+		"document reference"
+	],
+	"addresses": [
+		"ALESSIO11"
+	],
+	"deliveryType": "STANDARD",
+	"traceParent": "ba7cf543-c1d9-4d3c-9984-badd5362e8a4",
+	"status": "COMPLETED"
+}
+
+KEY::
+{
+	"uuid": "ba7cf543-c1d9-4d3c-9984-badd5362e8a4",
+	"username": "user2"
+}
+
