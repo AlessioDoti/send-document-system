@@ -1,0 +1,19 @@
+{
+	"info": {
+		"_postman_id": "18eed071-6ef8-4943-9e87-47d25349acb0",
+		"name": "Request Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46232752",
+		"_collection_link": "https://alessiodoti.postman.co/workspace/Alessio-Doti's-Workspace~e66c331a-9514-4267-8321-b5beb67f5bb8/collection/46232752-18eed071-6ef8-4943-9e87-47d25349acb0?action=share&source=collection_link&creator=46232752"
+	},
+	"item": [
+		{
+			"name": "Inserisci richiesta",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

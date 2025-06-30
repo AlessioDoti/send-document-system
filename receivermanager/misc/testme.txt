@@ -1,0 +1,2 @@
+Per testare il progetto è necessario lanciare con docker compose il file kafka.yml nella root del progetto e i due yml contenuti nella cartella receivermanager-db.
+Servirsi della collection in questa cartella per testare le API.
