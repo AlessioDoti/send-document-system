@@ -66,4 +66,4 @@ Il progetto potrebbe risultare legggermente overingegnerizzato data la portata r
 
 
 ## NOTE
-Ogni microservizio presenta nella cartella misc le istruzioni per i test.
+Ogni microservizio presenta nella cartella misc le istruzioni per i test. I database saranno vuoti(fatta eccezione per la tabella USERS), dunque prima di ogni operazione di GET si consiglia di inserire qualche record mediante API/evento.
